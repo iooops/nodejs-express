@@ -1,6 +1,21 @@
 'use strict';
 
 const express = require('express');
+const fs = require('fs');
+const df = require('df');
+
+fs.readdir('/mnt/workspace', (err, files) => {
+  console.log(files)
+});
+
+df(function (err, table) {
+  if (err) {
+    console.error(err.stack);
+    return;
+  }
+
+  console.log(JSON.stringify(table, null, '  '));
+});
 
 // Constants
 const PORT = 8080;
@@ -14,6 +29,7 @@ app.get('/*', (req, res) => {
 
 // Event function invocation
 app.post('/invoke', (req, res) => {
+	console.log(req)
   res.send('Hello FunctionCompute, event function\n');
 });
 
