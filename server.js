@@ -2,19 +2,9 @@
 
 const express = require('express');
 const fs = require('fs');
-const df = require('df');
 
 fs.readdir('/mnt/workspace', (err, files) => {
   console.log(files)
-});
-
-df(function (err, table) {
-  if (err) {
-    console.error(err.stack);
-    return;
-  }
-
-  console.log(JSON.stringify(table, null, '  '));
 });
 
 // Constants
